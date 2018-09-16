@@ -5,11 +5,6 @@
  */
 package ast;
 
-import lib.BooleanValue;
-import lib.DoubleValue;
-import lib.IntegerValue;
-import lib.StringValue;
-import lib.Value;
 import lib.Variables;
 
 /**
