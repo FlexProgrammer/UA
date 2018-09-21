@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vlad2_000/Documents/NetBeansProjects/UA02/src/ast/DeclarationStatement.java</file>
-            <file>file:/C:/Users/vlad2_000/Documents/NetBeansProjects/UA02/programm.txt</file>
-            <file>file:/C:/Users/vlad2_000/Documents/NetBeansProjects/UA02/src/Parser/Parser.java</file>
-            <file>file:/C:/Users/vlad2_000/Documents/NetBeansProjects/UA02/src/ast/ArrayAssignmentStatement.java</file>
-            <file>file:/C:/Users/vlad2_000/Documents/NetBeansProjects/UA02/src/ast/ArrayAccesExpression.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/ast/DeclarationStatement.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/parser/Parser.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/lib/IntegerValue.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/lib/BooleanValue.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/programm.txt</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/ast/VariableExpression.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/ast/PrintStatement.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/ast/ValueExpression.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/lib/DoubleValue.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/ast/BlockStatement.java</file>
+            <file>file:/C:/Users/vlad2_000/Documents/GitHub/UA/UA/src/ast/BinaryExpression.java</file>
         </group>
     </open-files>
 </project-private>

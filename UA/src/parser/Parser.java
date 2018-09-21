@@ -1,8 +1,7 @@
 
 package Parser;
 
-import ast.ArrayAccesExpression;
-import ast.ArrayExpression;
+
 import ast.AssignmentStatement;
 import ast.BinaryExpression;
 import ast.BlockStatement;
@@ -60,23 +59,13 @@ public class Parser {
     
     private Statement statement(){
         Token current = get(0);
-        if(current.getType() == TokenType.DECLARATION && get(1).getType() == TokenType.LBRAKET){
-            match(TokenType.DECLARATION);
-            match(TokenType.LBRAKET);
-            match(TokenType.RBRAKET);
-            final String name = consume(TokenType.WORD);
-            if(match(TokenType.EQ)){
-                return declarationStatement(current.getText(), name, true, true);
-            }
-            return declarationStatement(current.getText(), name, false, true);
-        }
         if(current.getType() == TokenType.DECLARATION && get(2).getType() != TokenType.LPAREN){
             match(TokenType.DECLARATION);
             final String name = consume(TokenType.WORD);
             if(match(TokenType.EQ)){
-                return declarationStatement(current.getText(), name, true, false);
+                return declarationStatement(current.getText(), name, true);
             }
-            return declarationStatement(current.getText(), name, false, false);
+            return declarationStatement(current.getText(), name, false);
         }
         if(current.getType() == TokenType.DECLARATION && get(2).getType() == TokenType.LPAREN){
             return functionDefine(current.getText());
@@ -120,26 +109,7 @@ public class Parser {
         return new AssignmentStatement(name, expression());
     }
     
-    private Statement declarationStatement(String type, String name, boolean isAssignment, boolean isArray){
-        if(isArray){
-            switch(type){
-                case "int":{
-                    return new DeclarationStatement(name, VariableType.INTARRAY, isAssignment ? array(VariableType.INTARRAY) : null);
-                }
-                case "double":{
-                    return new DeclarationStatement(name, VariableType.DOUBLEARRAY, isAssignment ? array(VariableType.DOUBLEARRAY) : null);
-                }
-                case "string":{
-                    return new DeclarationStatement(name, VariableType.STRINGARRAY, isAssignment ? array(VariableType.STRINGARRAY) : null);
-                }
-                case "boolean":{
-                    return new DeclarationStatement(name, VariableType.BOOLEANARRAY, isAssignment ? array(VariableType.BOOLEANARRAY) : null);
-                }
-                default:{
-                    return new DeclarationStatement(name, VariableType.ARRAY, isAssignment ? array(VariableType.VOID) : null);
-                }
-            }
-        }
+    private Statement declarationStatement(String type, String name, boolean isAssignment){
         switch(type){
             case "int":{
                 return new DeclarationStatement(name, VariableType.INT, isAssignment ? expression() : null);
@@ -154,27 +124,6 @@ public class Parser {
                 return new DeclarationStatement(name, VariableType.BOOLEAN, isAssignment ? expression() : null);
             }
         }
-    }
-    
-    private Expression array(VariableType type){
-        match(TokenType.LBRACE);
-        final List<Expression> array = new ArrayList<>();
-        while(!match(TokenType.RBRACE)){
-            array.add(expression());
-            match(TokenType.COMMA);
-        }
-        return new ArrayExpression(type, array);
-    }
-    
-    private ArrayAccesExpression elements(){
-        final String name = consume(TokenType.WORD);
-        List<Expression> indices = new ArrayList<>();
-        do{
-            match(TokenType.LBRAKET);
-            indices.add(expression());
-            match(TokenType.RBRAKET);
-        }while(get(0).getType() == TokenType.LBRAKET);
-        return new ArrayAccesExpression(name, indices);
     }
     
     private Statement switchStatement(){
@@ -244,7 +193,7 @@ public class Parser {
         final String current = consume(TokenType.DECLARATION);
         final String name = consume(TokenType.WORD);
         match(TokenType.EQ);
-        final Statement initialize = declarationStatement(current, name, true, false);
+        final Statement initialize = declarationStatement(current, name, true);
         match(TokenType.SEMICOLON);
         final Expression condition = expression();
         match(TokenType.SEMICOLON);
@@ -435,9 +384,6 @@ public class Parser {
         }
         if (current.getType() == TokenType.WORD && get(1).getType() == TokenType.LPAREN){
             return function();
-        }
-        if (current.getType() == TokenType.WORD && get(1).getType() == TokenType.LBRAKET){
-            return elements();
         }
         if (match(TokenType.WORD)){
             return new VariableExpression(current.getText());

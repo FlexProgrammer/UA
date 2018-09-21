@@ -19,7 +19,7 @@ public class DoubleValue implements Value{
     
     @Override
     public int toInt() {
-        return (int) ((value < 2.5) ? Math.floor(value) : Math.ceil(value));
+        return (int) ((value - 0.5 < Math.floor(value)) ? Math.floor(value) : Math.ceil(value));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class DoubleValue implements Value{
 
     @Override
     public boolean toBoolean() {
-        return value != 0.0;
+        return (value != 0.0);
     }
 
     @Override

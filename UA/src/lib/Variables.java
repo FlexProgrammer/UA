@@ -51,11 +51,6 @@ public class Variables {
                 case DOUBLE: variables.put(name, new DoubleValue(value.toDouble()));break;
                 case STRING: variables.put(name, new StringValue(value.asString()));break;
                 case BOOLEAN: variables.put(name, new BooleanValue(value.toBoolean()));break;
-                case ARRAY: variables.put(name, new ArrayValue((ArrayValue) value));break;
-                case INTARRAY: variables.put(name, new IntArray((IntArray) value));break;
-                case DOUBLEARRAY: variables.put(name, new DoubleArray( (DoubleArray) value));break;
-                case STRINGARRAY: variables.put(name, new StringArray((StringArray) value));break;
-                case BOOLEANARRAY: variables.put(name, new BooleanArray((BooleanArray) value));break;
             }
         }
     }

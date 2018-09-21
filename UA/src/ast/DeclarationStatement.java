@@ -31,7 +31,6 @@ public class DeclarationStatement implements Statement{
         if(expr != null){
             Variables.set(name, expr.eval());
         }
-        Variables.set(name, null);
     }
     
 }

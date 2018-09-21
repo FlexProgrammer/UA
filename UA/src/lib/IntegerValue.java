@@ -34,7 +34,7 @@ public class IntegerValue implements Value{
 
     @Override
     public boolean toBoolean() {
-        return value != 0;
+        return (value != 0);
     }
 
     @Override

@@ -27,6 +27,6 @@ public class VariableExpression implements Expression{
     
     @Override
     public String toString() {
-        return String.format("%s [%f]", name, Variables.get(name));
+        return Variables.get(name).asString();
     }
 }
